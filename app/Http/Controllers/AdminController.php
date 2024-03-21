@@ -546,7 +546,6 @@ class AdminController extends Controller
                 $nama_file_gambar = 'gambar_layanan_'.$request->nama_layanan.$file_gambar->getClientOriginalName();
                 $file_gambar->move('file_gambar/instansi/layanan',$nama_file_gambar);
                 $nama_file_gambar_layanan = 'file_gambar/instansi/layanan/'.$nama_file_gambar;
-                dd($nama_file_gambar_layanan);
                 // get path gambar sebelumnya
                 $getpath = Gambar_detail_layanan::select("*")->from("gambar_detail_layanan")->where("id_layanan",'=',$request->id_layanan)->first();
                 if($getpath !== null){
@@ -560,7 +559,6 @@ class AdminController extends Controller
                     if($update){
                         return back()->with(['sukses_edit' => "berhasil edit layanan"]);
                     }else{
-                        dd(14);
                         return back()->with(['error_edit' => "gagal edit layanan"]);
                     }
                 }else{
@@ -582,12 +580,12 @@ class AdminController extends Controller
                 ->update([
                     'judul_gambar' => $request->judul_gambar
                 ]);
-            }
-            if($update){
-                return back()->with(['sukses_edit' => "berhasil edit layanan"]);
-            }else{
-                dd(100);
-                return back()->with(['error_edit' => "gagal edit layanan"]);
+                if($update){
+                    return back()->with(['sukses_edit' => "berhasil edit layanan"]);
+                }else{
+                    dd(100);
+                    return back()->with(['error_edit' => "gagal edit layanan"]);
+                }
             }
         }
     }
