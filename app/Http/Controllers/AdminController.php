@@ -142,6 +142,12 @@ class AdminController extends Controller
                     'jenis' => $request->jenis,
                 ]);
             }
+            if($request->maps !== null){
+                DB::table('gedung')->where('id','=',$request->id)
+                ->update([
+                    'maps' => $request->maps,
+                ]);
+            }
             // pertama update data gedung nya dulu
             // misal deskripsi nya  diubah
             if($request->deskripsi !== null){
@@ -504,35 +510,32 @@ class AdminController extends Controller
                     if($update){
                         return back()->with(['sukses_edit' => "berhasil edit layanan"]);
                     }else{
-                        dd(1);
                         return back()->with(['error_edit' => "gagal edit layanan"]);
                     }
                 }else{
-                    $update = DB::table('gambar_detail_layanan')
-                    ->insert([
-                        'gambar_detail' => $nama_file_gambar_layanan,
-                        'judul_gambar' => $request->judul_gambar_detail
-                    ]);
-                    if($update){
-                        return back()->with(['sukses_edit' => "berhasil edit layanan"]);
-                    }else{
-                        dd(2);
-                        return back()->with(['error_edit' => "gagal edit layanan"]);
+                    if($request->judul_gambar_detail !== null){
+                        $update = DB::table('gambar_detail_layanan')
+                        ->insert([
+                            'gambar_detail' => $nama_file_gambar_layanan,
+                            'judul_gambar' => $request->judul_gambar_detail,
+                            'id_layanan' => $request->id_layanan
+                        ]);
+                        if($update){
+                            return back()->with(['sukses_edit' => "berhasil edit layanan"]);
+                        }else{
+                            dd(2);
+                            return back()->with(['error_edit' => "gagal edit layanan"]);
+                        }
                     }
                 }
 
             }else{
                 $update = DB::table('gambar_detail_layanan')
-                    ->where('id_layanan','=',$request->id_layanan)
-                    ->update([
-                        'judul_gambar' => $request->judul_gambar_detail
-                    ]);
-                if($update){
-                    return back()->with(['sukses_edit' => "berhasil edit layanan"]);
-                }else{
-                    dd($request->judul_gambar_detail);
-                    return back()->with(['error_edit' => "gagal edit layanan"]);
-                }
+                ->where('id_layanan','=',$request->id_layanan)
+                ->update([
+                    'judul_gambar' => $request->judul_gambar_detail
+                ]);
+                return back()->with(['sukses_edit' => "berhasil edit layanan"]);
             }
         }else{
             $update = DB::table('layanan')
@@ -548,13 +551,14 @@ class AdminController extends Controller
                 $nama_file_gambar_layanan = 'file_gambar/instansi/layanan/'.$nama_file_gambar;
                 // get path gambar sebelumnya
                 $getpath = Gambar_detail_layanan::select("*")->from("gambar_detail_layanan")->where("id_layanan",'=',$request->id_layanan)->first();
+
                 if($getpath !== null){
                     File::delete($getpath->gambar_detail);
                     $update = DB::table('gambar_detail_layanan')
                     ->where('id_layanan','=',$request->id_layanan)
                     ->update([
                         'gambar_detail' => $nama_file_gambar_layanan,
-                        'judul_gambar' => $request->judul_gambar
+                        'judul_gambar' => $request->judul_gambar_detail
                     ]);
                     if($update){
                         return back()->with(['sukses_edit' => "berhasil edit layanan"]);
@@ -562,30 +566,28 @@ class AdminController extends Controller
                         return back()->with(['error_edit' => "gagal edit layanan"]);
                     }
                 }else{
-                    $update = DB::table('gambar_detail_layanan')
-                    ->insert([
-                        'gambar_detail' => $nama_file_gambar_layanan,
-                        'id_layanan' => $request->id_layanan,
-                    ]);
-                    if($update){
-                        return back()->with(['sukses_edit' => "berhasil edit layanan"]);
-                    }else{
-                        dd(5);
-                        return back()->with(['error_edit' => "gagal edit layanan"]);
+                    if($request->judul_gambar_detail !== null){
+                        $update = DB::table('gambar_detail_layanan')
+                        ->insert([
+                            'gambar_detail' => $nama_file_gambar_layanan,
+                            'judul_gambar' => $request->judul_gambar_detail,
+                            'id_layanan' => $request->id_layanan
+                        ]);
+                        if($update){
+                            return back()->with(['sukses_edit' => "berhasil edit layanan"]);
+                        }else{
+                            dd(2);
+                            return back()->with(['error_edit' => "gagal edit layanan"]);
+                        }
                     }
                 }
             }else{
                 $update = DB::table('gambar_detail_layanan')
                 ->where('id_layanan','=',$request->id_layanan)
                 ->update([
-                    'judul_gambar' => $request->judul_gambar
+                    'judul_gambar' => $request->judul_gambar_detail
                 ]);
-                if($update){
-                    return back()->with(['sukses_edit' => "berhasil edit layanan"]);
-                }else{
-                    dd(100);
-                    return back()->with(['error_edit' => "gagal edit layanan"]);
-                }
+                return back()->with(['sukses_edit' => "berhasil edit layanan"]);
             }
         }
     }
@@ -2165,7 +2167,7 @@ class AdminController extends Controller
         $cek = List_fasilitas::select("*")->from("list_fasilitas")->where("id",'=',$id)->first();
         if($cek){
             // cek diatas merupakan ngecek apakah benar adanya data tersebut di table list fasilitas
-            $hapus_fasilitas_penginapan = DB::table("fasilitas")->select("*")->where("id_jenis_fasilitas",'=',$id)->delete();
+            $hapus_fasilitas_penginapan = DB::table("fasilitas")->where("id_jenis_fasilitas",'=',$id)->delete();
             // hapus_fasilitas_penginapan adalah menghapus fasilitas terkait yang sudah digunakan pada penginapan
             // setelah itu baru hapus dari list fasilitas
             if($hapus_fasilitas_penginapan){
@@ -2176,7 +2178,12 @@ class AdminController extends Controller
                     return back()->with(["error_delete" => "gagal menghapus fasilitas"]);
                 }
             }else{
-                return back()->with(["error_delete" => "gagal menghapus fasilitas"]);
+                $hapus_jenis_fasilitas = DB::table("list_fasilitas")->select("*")->where("id",'=',$id)->delete();
+                if($hapus_jenis_fasilitas){
+                    return back()->with(["sukses_delete" => "berhasil menghapus fasilitas"]);
+                }else{
+                    return back()->with(["error_delete" => "gagal menghapus fasilitas"]);
+                }
             }
         }
     }

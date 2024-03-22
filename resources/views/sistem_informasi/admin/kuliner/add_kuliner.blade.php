@@ -43,6 +43,14 @@
                       required
                       />
                   </div>
+
+                  <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                    <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                    <span id="jml_input_string_container">
+                      <span id="jml_input_string">0</span> 
+                      / 50</span>
+                  </div>
+
                   <div class="gambar_upload">
                     <span class="formbold-form-label mt-3"> Foto Kuliner <strong class="text-danger">*</strong></span>
                     <input id="file-upload" type="file" name="file_gambar" accept="image/*" />
@@ -111,10 +119,26 @@
                       <label for="menu1" class="form-label">Menu 1</label>
                       <input type="text" class="form-control" name="menu1" id="menu1" placeholder="Masukkan Nama Menu">
                     </div>
+
+                    <div id="error_menu_container1" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_menu1" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                      <span id="jml_input_menu_container1">
+                        <span id="jml_input_menu1">0</span> 
+                        / 50</span>
+                    </div>
+
                     <div class="mb-3">
                       <label for="hargamenu1" class="form-label">Harga 1</label>
                       <input type="text" class="form-control" name="hargamenu1" id="hargamenu1" placeholder="Masukkan Harga">
                     </div>
+
+                    <div id="error_harga_menu_container1" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_harga_menu1" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                      <span id="jml_input_harga_menu_container1">
+                        <span id="jml_input_harga_menu1">0</span> 
+                        / 10</span>
+                    </div>
+
                     <hr>
                   </div>
                 </div>
@@ -185,6 +209,104 @@
 <div id="toastBox">
 </div>
 <script>
+  // untuk nama warung
+  document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('nama');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_string');
+      var jmlInputString_container = document.getElementById('jml_input_string_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+  // untuk nama menu 1
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('menu1');
+      var errorNama = document.getElementById('error_menu1');
+      var jmlInputString = document.getElementById('jml_input_menu1');
+      var jmlInputString_container = document.getElementById('jml_input_menu_container1');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+
+
+
+// untuk batasan input menu ke 1 dan memastikan harus angka
+document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('hargamenu1');
+    var errorNama = document.getElementById('error_harga_menu1');
+    var jmlInputString = document.getElementById('jml_input_harga_menu1');
+    var jmlInputString_container = document.getElementById('jml_input_harga_menu_container1');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+        var length = inputValue.length;
+        jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+
+        if (!/^\d+$/.test(inputValue)) { // Memeriksa apakah input hanya terdiri dari angka
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+        if (length > 10) {
+            jmlInputString_container.style.color = "red";
+            inputDinas.value = inputValue.substring(0, 10); 
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else if (length === 10) {
+            jmlInputString_container.style.color = "red";
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else {
+            jmlInputString_container.style.color = "black";
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+</script>
+<script>
   document.addEventListener("DOMContentLoaded", function() {
     var tambahButton = document.getElementById("tambah_layanan");
     var kurangButton = document.getElementById("kurang_layanan");
@@ -203,15 +325,104 @@
                       <label for="menu${count}" class="form-label">Menu ${count}</label>
                       <input type="text" class="form-control" name="menu${count}" id="menu${count}" placeholder="Masukkan Nama Menu">
                     </div>
+                    <div id="error_menu_container${count}" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_menu${count}" class="text-danger" style="text-transform: capitalize"></span>
+                      <span id="jml_input_menu_container${count}">
+                        <span id="jml_input_menu${count}">0</span> 
+                        / 50</span>
+                    </div>
+
                     <div class="mb-3">
                       <label for="hargamenu${count}" class="form-label">Harga ${count}</label>
                       <input type="text" class="form-control" name="hargamenu${count}" id="hargamenu${count}" placeholder="Masukkan Harga">
+                    </div>
+                    <div id="error_harga_menu_container${count}" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_harga_menu${count}" class="text-danger" style="text-transform: capitalize"></span>
+                      <span id="jml_input_harga_menu_container${count}">
+                        <span id="jml_input_harga_menu${count}">0</span> 
+                        / 10</span>
                     </div>
                     <hr>
         `;
         jumlahlayananContainer.setAttribute("value", count);
         layananContainer.appendChild(newLayananContainer);
+        addLayananInput(count);
+        addHargaMenu(count);
     });
+  // untuk batasan nama menu dan harga ( yang menu lebih dari 1 )
+    function addLayananInput(count) {
+        var inputId = "menu" + count;
+        var errorId = "error_menu" + count;
+        var jmlInputStringId = "jml_input_menu" + count;
+        var jmlInputStringContainerId = "jml_input_menu_container" + count;
+
+        // Tambahkan event listener untuk input baru
+        var inputDinas = document.getElementById(inputId);
+        var errorNama = document.getElementById(errorId);
+        var jmlInputString = document.getElementById(jmlInputStringId);
+        var jmlInputStringContainer = document.getElementById(jmlInputStringContainerId);
+
+        inputDinas.addEventListener('input', function() {
+            updateCharacterCount(inputDinas, errorNama, jmlInputString, jmlInputStringContainer);
+        });
+    }
+
+    function updateCharacterCount(inputDinas, errorNama, jmlInputString, jmlInputStringContainer) {
+        var length = inputDinas.value.length;
+        jmlInputString.textContent = length;
+
+        if (length > 50) {
+            jmlInputStringContainer.style.color = "red";
+            inputDinas.value = inputDinas.value.substring(0, 50);
+            errorNama.textContent = "Maksimal 50 huruf";
+        } else if (length == 50) {
+            jmlInputStringContainer.style.color = "red";
+            errorNama.textContent = "Maksimal 50 huruf";
+        } else {
+            jmlInputStringContainer.style.color = "black";
+            errorNama.textContent = "";
+        }
+    }
+
+    function addHargaMenu(count) {
+        var inputId = "hargamenu" + count;
+        var errorId = "error_harga_menu" + count;
+        var jmlInputStringId = "jml_input_harga_menu" + count;
+        var jmlInputStringContainerId = "jml_input_harga_menu_container" + count;
+
+        // Tambahkan event listener untuk input baru
+        var inputDinas1 = document.getElementById(inputId);
+        var errorNama1 = document.getElementById(errorId);
+        var jmlInputString1 = document.getElementById(jmlInputStringId);
+        var jmlInputStringContainer1 = document.getElementById(jmlInputStringContainerId);
+
+        inputDinas1.addEventListener('input', function() {
+            updateangkaCount(inputDinas1, errorNama1, jmlInputString1, jmlInputStringContainer1);
+        });
+    }
+
+    function updateangkaCount(inputDinas1, errorNama1, jmlInputString1, jmlInputStringContainer1) {
+        var length = inputDinas1.value.length;
+        var inputValue = inputDinas1.value;
+        jmlInputString1.textContent = length;
+
+        if (!/^\d+$/.test(inputValue)) { // Memeriksa apakah input hanya terdiri dari angka
+            errorNama1.textContent = "Input harus angka";
+            return;
+        }
+
+        if (length > 10) {
+            jmlInputStringContainer1.style.color = "red";
+            inputDinas1.value = inputDinas1.value.substring(0, 10);
+            errorNama1.textContent = "Maksimal 10 angka";
+        } else if (length == 10) {
+            jmlInputStringContainer1.style.color = "red";
+            errorNama1.textContent = "Maksimal 10 angka";
+        } else {
+            jmlInputStringContainer1.style.color = "black";
+            errorNama1.textContent = "";
+        }
+    }
 
     // Fungsi untuk mengurangi layanan
     kurangButton.addEventListener("click", function() {
@@ -226,6 +437,7 @@
         }
     });
 });
+
 document.addEventListener("DOMContentLoaded", function() {
     var biasaRadio = document.getElementById("biasa");
     var excelRadio = document.getElementById("excel");

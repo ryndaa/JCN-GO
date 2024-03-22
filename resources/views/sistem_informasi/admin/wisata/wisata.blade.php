@@ -284,6 +284,14 @@
                                 <label for="nama">Nama Wisata :</label>
                                 <input id="nama" type="text" class="form-control" placeholder="Masukkan naama wisata" required name="nama">
                             </div>
+
+                            <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_string_container">
+                                  <span id="jml_input_string">0</span> 
+                                  / 50</span>
+                            </div>
+
                             <div class="gambar_upload">
                                 <span class="formbold-form-label mt-3"> Foto Wisata <strong class="text-danger">*</strong></span>
                                 <input required id="file-upload" type="file" name="file_gambar" accept="image/*" />
@@ -316,10 +324,26 @@
                                 <label for="harga">Harga Tiket pada hari biasa (Rupiah) :</label>
                                 <input id="harga" type="number" class="form-control" placeholder="Masukkan harga" required name="harga">
                             </div>
+
+                            <div id="error_harga_biasa_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_harga_biasa" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_hari_biasa_container">
+                                  <span id="jml_input_hari_biasa">0</span> 
+                                  / 10</span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="harga_weekend">Harga Tiket pada weekend (Rupiah) :</label>
                                 <input id="harga_weekend" type="number" class="form-control" placeholder="Masukkan harga" required name="harga_weekend">
                             </div>
+
+                            <div id="error_harga_weekend_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_harga_weekend" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_hari_weekend_container">
+                                  <span id="jml_input_hari_weekend">0</span> 
+                                  / 10</span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="jarak">Jarak dari balaikota (Km) :</label>
                                 <input id="jarak" type="float" class="form-control" placeholder="Masukkan jarak" required name="jarak">
@@ -427,7 +451,96 @@
     </section>
     <div id="toastBox">
     </div>
+<script>
+    // batas huruf nama
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('nama');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_string');
+      var jmlInputString_container = document.getElementById('jml_input_string_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+//   jml int harga biasa
+document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('harga');
+      var errorNama = document.getElementById('error_hari_biasa');
+      var jmlInputString = document.getElementById('jml_input_hari_biasa');
+      var jmlInputString_container = document.getElementById('jml_input_hari_biasa_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 10) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 10); // Memotong nilai input jika lebih dari 10 karakter
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error
+          } else if (length == 10) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error jika tepat 10 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 10 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+//   jml int harga weekend
+document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('harga_weekend');
+      var errorNama = document.getElementById('error_hari_weekend');
+      var jmlInputString = document.getElementById('jml_input_hari_weekend');
+      var jmlInputString_container = document.getElementById('jml_input_hari_weekend_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 10) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 10); // Memotong nilai input jika lebih dari 10 karakter
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error
+          } else if (length == 10) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error jika tepat 10 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 10 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
 
+</script>
     @if ($massage = Session::get('error_toast'))
         <script>
             let box = document.getElementById('toastBox');

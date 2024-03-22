@@ -532,7 +532,13 @@ animation: anim 5s linear forwards;
                       class="formbold-form-input"
                       required
                     />
-              </div>
+                </div>
+                <div id="error_fasilitas_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                  <span id="error_fasilitas" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                  <span id="jml_input_fasilitas_container">
+                    <span id="jml_input_fasilitas">0</span> 
+                    / 25</span>
+                </div>
             </div>
             <div class="modal-footer" style="text-align: center">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -583,6 +589,12 @@ animation: anim 5s linear forwards;
                       required
                       />
                     </div>
+                    <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_nama" class="text-danger" style="text-transform: capitalize"></span>
+                      <span id="jml_input_string_container">
+                        <span id="jml_input_string">0</span> 
+                        / 255</span>
+                    </div>
                     <div class="gambar_upload">
                       <span class="formbold-form-label mt-3"> Foto Penginapan <strong class="text-danger">*</strong></span>
                       <input id="file-upload" type="file" name="file_gambar" accept="image/*" />
@@ -615,7 +627,7 @@ animation: anim 5s linear forwards;
                         ></textarea>
                     </div>
                     <div>
-                        <label for="telp" class="formbold-form-label mt-3">No Telp ( contoh: 08547218271 / 02177218) <strong class="text-danger font-weight-bold">*</strong> </label>
+                        <label for="telp" class="formbold-form-label mt-3">No Telp ( contoh: 08547218271 / 02177218 / 628587623) <strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
                         type="int"
                         name="telp"
@@ -625,6 +637,14 @@ animation: anim 5s linear forwards;
                         required
                         />
                     </div>
+
+                    <div id="error_telp_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_telp" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                      <span id="jml_input_telp_container">
+                        <span id="jml_input_telp">0</span> 
+                        / 20</span>
+                    </div>
+
                     <div>
                         <label for="harga_terendah" class="formbold-form-label mt-3">Harga terendah ( Rupiah )<strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
@@ -636,6 +656,14 @@ animation: anim 5s linear forwards;
                         required
                         />
                     </div>
+
+                    <div id="error_harga_terendah_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_harga_terendah" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                      <span id="jml_input_harga_terendah_container">
+                        <span id="jml_input_harga_terendah">0</span> 
+                        / 10</span>
+                    </div>
+                    
                     <div>
                         <label for="harga_tertinggi" class="formbold-form-label mt-3">Harga tertinggi (Rupiah)<strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
@@ -647,12 +675,20 @@ animation: anim 5s linear forwards;
                         required
                         />
                     </div>
+                    
+                    <div id="error_harga_tertinggi_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                      <span id="error_harga_tertinggi" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                      <span id="jml_input_harga_tertinggi_container">
+                        <span id="jml_input_harga_tertinggi">0</span> 
+                        / 10</span>
+                    </div>
+                    
                     <div>
                         <label for="jarak" class="formbold-form-label mt-3">Jarak dari balaikota (km)<strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
                         type="float"
                         name="jarak"
-                        placeholder="Masukkan jml jarak"
+                        placeholder="Masukkan jarak ( Maksimal 10km )"
                         id="jarak"
                         class="formbold-form-input"
                         required
@@ -673,9 +709,9 @@ animation: anim 5s linear forwards;
               <div class="formbold-form-step-2">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap;align-content:center;">
                   @foreach ($fasilitas as $fasilitass )
-                  <div class="form-check form-switch" style="width: 150px;display: flex; flex-direction: row; justify-content: space-between;margin-top: 15px;">
+                  <div class="form-check form-switch" style="width: 200px;display: flex; flex-direction: row; justify-content: space-between;margin-top: 15px;">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="fasilitas[]" value="{{ $fasilitass->id }}">
-                    <label class="form-check-label"  style="text-transform:uppercase; font-size: 12px;">{{ $fasilitass->nama_fasilitas }}</label>
+                    <label class="form-check-label"  style="text-transform:capitalize; white-space: pre-wrap font-size: 8px;">{{ $fasilitass->nama_fasilitas }}</label>
                     <button style="border: none; background: transparent; color: red;" onclick="showDeleteConfirmation( '{{$fasilitass->id }}' )" class="d-inline-block" style="margin-right:28px;" title="delete" name="delete">
                       <i style="font-size: 15px" class="fa fa-trash"></i>
                     </button>
@@ -683,7 +719,7 @@ animation: anim 5s linear forwards;
                   @endforeach
                 </div>
                 <div>
-                  <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" name="edit_menu"  style="display: inline-block; border:none; background: transparent;margin-top: 10px;" title="Tambah Fasilitas">
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" name="edit_menu"  style="display: inline-block; border:none; background: transparent;margin-top: 10px;" title="Tambah Fasilitas">
                     <i class="fa fa-plus" style="font-size: 15px;"></i><span style="display: inline-block; margin-left: 10px;">Tambah Jenis Fasilitas</span>
                   </button>
                 </div>
@@ -749,6 +785,174 @@ animation: anim 5s linear forwards;
 <div id="toastBox">
 </div>
 <script>
+  // utk batasan input nama
+  document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('penginapan');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_string');
+      var jmlInputString_container = document.getElementById('jml_input_string_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 255) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 255); // Memotong nilai input jika lebih dari 255 karakter
+              errorNama.textContent = "Maksimal 255 huruf"; // Menampilkan pesan error
+          } else if (length == 255) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 255 huruf"; // Menampilkan pesan error jika tepat 255 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 255 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+
+  // untuk batasan input telp dan memastikan harus angka
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('telp');
+    var errorNama = document.getElementById('error_telp');
+    var jmlInputString = document.getElementById('jml_input_telp');
+    var jmlInputString_container = document.getElementById('jml_input_telp_container');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+        var length = inputValue.length;
+        jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+
+        if (!/^\d+$/.test(inputValue)) { // Memeriksa apakah input hanya terdiri dari angka
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+        if (length > 20) {
+            jmlInputString_container.style.color = "red";
+            inputDinas.value = inputValue.substring(0, 20); 
+            errorNama.textContent = "Maksimal 20 angka"; 
+        } else if (length === 20) {
+            jmlInputString_container.style.color = "red";
+            errorNama.textContent = "Maksimal 20 angka"; 
+        } else {
+            jmlInputString_container.style.color = "black";
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
+// batasan dan cek input harga terendah
+document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('harga_terendah');
+    var errorNama = document.getElementById('error_harga_terendah');
+    var jmlInputString = document.getElementById('jml_input_harga_terendah');
+    var jmlInputString_container = document.getElementById('jml_input_harga_terendah_container');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+        var length = inputValue.length;
+        jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+
+        if (!/^\d+$/.test(inputValue)) { // Memeriksa apakah input hanya terdiri dari angka
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+        if (length > 10) {
+            jmlInputString_container.style.color = "red";
+            inputDinas.value = inputValue.substring(0, 10); 
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else if (length === 10) {
+            jmlInputString_container.style.color = "red";
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else {
+            jmlInputString_container.style.color = "black";
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
+// batasan dan tipe input harge tertinggi
+document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('harga_tertinggi');
+    var errorNama = document.getElementById('error_harga_tertinggi');
+    var jmlInputString = document.getElementById('jml_input_harga_tertinggi');
+    var jmlInputString_container = document.getElementById('jml_input_harga_tertinggi_container');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+        var length = inputValue.length;
+        jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+
+        if (!/^\d+$/.test(inputValue)) { // Memeriksa apakah input hanya terdiri dari angka
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+        if (length > 10) {
+            jmlInputString_container.style.color = "red";
+            inputDinas.value = inputValue.substring(0, 10); 
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else if (length === 10) {
+            jmlInputString_container.style.color = "red";
+            errorNama.textContent = "Maksimal 10 angka"; 
+        } else {
+            jmlInputString_container.style.color = "black";
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
+// untuk batasan input nama fasilitas
+document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('jenis_fasilitas');
+      var errorNama = document.getElementById('error_fasilitas');
+      var jmlInputString = document.getElementById('jml_input_fasilitas');
+      var jmlInputString_container = document.getElementById('jml_input_fasilitas_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 25) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 25); // Memotong nilai input jika lebih dari 25 karakter
+              errorNama.textContent = "Maksimal 25 huruf"; // Menampilkan pesan error
+          } else if (length == 25) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 25 huruf"; // Menampilkan pesan error jika tepat 25 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 25 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+
   function tambahJenisFasilitas() {
       var jenisFasilitas = document.getElementById('jenis_fasilitas').value;
       var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -819,11 +1023,12 @@ animation: anim 5s linear forwards;
         }, 3500);
     </script>
 @endif
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-  {{-- @if (session('sukses_add'))
+  @if (session('sukses_add'))
   <script>
       Swal.fire({
-      title: "Berhasil menambah data",
+      title: "{{session('sukses_add')}}",
       icon: "success"
       });
   </script>
@@ -831,11 +1036,11 @@ animation: anim 5s linear forwards;
   @if (session('error_add'))
   <script>
       Swal.fire({
-      title: "Gagal menambah data",
+      title: "{{session('error_add')}}",
       icon: "error"
       });
   </script>
-  @endif --}}
+  @endif
   <script>
             function showDeleteConfirmation(jenisfatilitasId) {
             const swalWithBootstrapButtons = Swal.mixin({
@@ -869,6 +1074,7 @@ animation: anim 5s linear forwards;
     
         // Fungsi untuk menghapus admin
         function deletejenisfatilitas(jenisfatilitasId) {
+          console.log(jenisfatilitasId);
             // Kirim permintaan AJAX ke controller untuk menghapus admin
             // Sesuaikan dengan URL atau metode yang digunakan dalam aplikasi Anda
             $.ajax({
@@ -898,7 +1104,15 @@ animation: anim 5s linear forwards;
                     // seperti me-refresh halaman atau menghapus elemen dari DOM, dll.
                 },
                 error: function (error) {
-                    console.error("Error deleting admin:", error);
+                  swalWithBootstrapButtons.fire({
+                        title: "Fasilitas Gagal Dihapus",
+                        text: response.error_delete,
+                        icon: "error"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                    });
                 }
             });
         }

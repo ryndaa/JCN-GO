@@ -673,6 +673,13 @@
                       required
                       />
                   </div>
+                  <div id="error_nama_container" style="display: flex; justify-content: space-between;">
+                    <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                    <span id="jml_input_string_container">
+                      <span id="jml_input_string">0</span> 
+                    / 100</span>
+                  </div>
+
                     <div class="mb-4">
                       <label for="jenis" class="formbold-form-label mt-3">Jenis Gedung</label>
                       <div class="mb-2">Jenis Gedung Sebelumnya : 
@@ -749,6 +756,12 @@
                         <div class="mb-3">
                           <label for="judulGambarlayananke1" class="form-label">Judul Gambar Detail Layanan ke 1</label>
                           <input type="text" class="form-control" name="judulGambarlayananke1" id="judulGambarlayananke1" placeholder="Masukkan Nama Layanan">
+                        </div>
+                        <div id="error_judul_container1" style="display: flex; justify-content: space-between;margin-bottom: 10px;">
+                          <span id="error_judul1" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                          <span id="jml_input_string_judul_container1">
+                            <span id="jml_input_string_judul1">0</span> 
+                          / 100</span>
                         </div>
                         <div class="gambar_upload" style="margin-bottom: 250px;">
                           <div class="file-upload_gambar" >
@@ -854,7 +867,64 @@
 </div>
 <div id="toastBox">
 </div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('dinas');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_string');
+      var jmlInputString_container = document.getElementById('jml_input_string_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 100) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 100); // Memotong nilai input jika lebih dari 100 karakter
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error
+          } else if (length == 100) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error jika tepat 100 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 100 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('judulGambarlayananke1');
+      var errorNama = document.getElementById('error_judul1');
+      var jmlInputString = document.getElementById('jml_input_string_judul1');
+      var jmlInputString_container = document.getElementById('jml_input_string_judul_container1');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 100) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 100); // Memotong nilai input jika lebih dari 100 karakter
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error
+          } else if (length == 100) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error jika tepat 100 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 100 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+</script>
 @if ($massage = Session::get('error_toast'))
     <script>
         let box = document.getElementById('toastBox');
@@ -941,7 +1011,7 @@ $('.image-upload-wrap').on('dragleave', function() {
             newLayananContainer.classList.add("mb-3");
 
             newLayananContainer.innerHTML = `
-            <div class="mb-3">
+        <div class="mb-3 mt-3">
             <label for="layananke${count}" class="form-label">Layanan Ke ${count}</label>
             <input type="text" class="form-control" name="layananke${count}" id="layananke${count}" placeholder="Masukkan Nama Layanan">
         </div>
@@ -953,6 +1023,14 @@ $('.image-upload-wrap').on('dragleave', function() {
           <label for="judulGambarlayananke${count}" class="form-label">Judul Gambar Detail Layanan ke ${count}</label>
           <input type="text" class="form-control" name="judulGambarlayananke${count}" id="judulGambarlayananke${count}" placeholder="Masukkan Nama Layanan">
         </div>
+
+        <div id="error_judul_container${count}" style="display: flex; justify-content: space-between;margin-bottom: 10px;">
+            <span id="error_judul${count}" class="text-danger" style="text-transform: capitalize"></span>
+            <span id="jml_input_string_judul_container${count}">
+                <span id="jml_input_string_judul${count}">0</span> 
+            / 100</span>
+        </div>
+
         <div class="gambar_upload">
             <div class="file-upload_gambar">
                 <input  id="file-upload_gambar-btn${count}" class="file-upload_gambar-btn" type="button"  onclick="document.getElementById('file-upload_gambar-input${count}').click()">
@@ -976,8 +1054,41 @@ $('.image-upload-wrap').on('dragleave', function() {
             `;
             jumlahlayananContainer.setAttribute("value", count);
             layananContainer.appendChild(newLayananContainer);
+            addLayananInput(count);
         });
+        function addLayananInput(count) {
+        var inputId = "judulGambarlayananke" + count;
+        var errorId = "error_judul" + count;
+        var jmlInputStringId = "jml_input_string_judul" + count;
+        var jmlInputStringContainerId = "jml_input_string_judul_container" + count;
 
+        // Tambahkan event listener untuk input baru
+        var inputDinas = document.getElementById(inputId);
+        var errorNama = document.getElementById(errorId);
+        var jmlInputString = document.getElementById(jmlInputStringId);
+        var jmlInputStringContainer = document.getElementById(jmlInputStringContainerId);
+
+        inputDinas.addEventListener('input', function() {
+            updateCharacterCount(inputDinas, errorNama, jmlInputString, jmlInputStringContainer);
+        });
+    }
+
+    function updateCharacterCount(inputDinas, errorNama, jmlInputString, jmlInputStringContainer) {
+        var length = inputDinas.value.length;
+        jmlInputString.textContent = length;
+
+        if (length > 100) {
+            jmlInputStringContainer.style.color = "red";
+            inputDinas.value = inputDinas.value.substring(0, 100);
+            errorNama.textContent = "Maksimal 100 huruf";
+        } else if (length == 100) {
+            jmlInputStringContainer.style.color = "red";
+            errorNama.textContent = "Maksimal 100 huruf";
+        } else {
+            jmlInputStringContainer.style.color = "black";
+            errorNama.textContent = "";
+        }
+    }
         // Fungsi untuk mengurangi layanan
         kurangButton.addEventListener("click", function() {
             if (count > 1) {
