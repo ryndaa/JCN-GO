@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="harga">harga :</label>
-                                    <input id="harga" type="int" class="form-control" placeholder="Masukkan harga Menu" required name="harga">
+                                    <input id="harga" type="number" class="form-control" placeholder="Masukkan harga Menu" required name="harga">
                                 </div>
                             </div>
                             <div class="modal-footer" style="text-align: center">
@@ -353,7 +353,7 @@ function deletekuliner(kulinerId) {
                     li.appendChild(namaMenu);
 
                     var hargaMenu = document.createElement('span');
-                    hargaMenu.innerHTML = 'harga : ' +  menu.harga
+                    hargaMenu.innerHTML = 'Rp.' +  menu.harga
                     hargaMenu.style.width = '100px';
                     li.appendChild(hargaMenu);
 
@@ -363,7 +363,7 @@ function deletekuliner(kulinerId) {
                     deleteLink.setAttribute('style','margin-right:28px; border: none; background: transparent; color: red;')
                     deleteLink.title = 'hapus menu';
                     deleteLink.className = 'd-inline-block ';
-                    deleteLink.innerHTML = '<i class="fa fa-trash-o"></i>';
+                    deleteLink.innerHTML = '<i class="fa fa-trash"></i>';
 
                     var editLink = document.createElement('button');
                     editLink.type = 'submit';
@@ -377,7 +377,7 @@ function deletekuliner(kulinerId) {
                     editLink.style.background = 'transparent';
                     editLink.title = 'edit menu';
                     editLink.className = 'd-inline-block ';
-                    editLink.innerHTML = '<i class="fa fa-pencil"></i>';
+                    editLink.innerHTML = '<i class="fa fa-pen"></i>';
 
                     btn_action.appendChild(deleteLink);
                     btn_action.appendChild(editLink);
@@ -747,7 +747,7 @@ function deletekuliner(kulinerId) {
 @if (session('error_add'))
 <script>
     Swal.fire({
-    title: "Gagal menambah data",
+    title: "{{session('error_add')}}",
     icon: "error"
     });
 </script>

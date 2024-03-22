@@ -1052,7 +1052,14 @@ class AdminController extends Controller
 
     public function add_admin(Request $request) {
         $pw = Bcrypt($request->password);
-
+        
+        $cek_kosong_email = trim($request->email);
+        $cek_kosong_username = trim($request->username);
+        $cek_kosong_nama_admin = trim($request->nama_admin);
+        $cek_kosong_password = trim($request->password);
+        if($cek_kosong_email == "" || $cek_kosong_username == "" || $cek_kosong_nama_admin == "" || $cek_kosong_password == "" ){
+            return back()->with(["error_add" => 'Input Tidak Boleh Kosong / Hanya Spasi']);
+        }
         // cek username udah tersedia atau belom
         $cek_username = Users::select("*")->from("users")->where("username",'=',$request->username)->first();
 
@@ -1098,6 +1105,17 @@ class AdminController extends Controller
                 'nama' => 'required',
                 'nama_admin' => 'required',
             ]);
+            $cek_kosong_email = trim($request->email);
+            $cek_kosong_nama_admin = trim($request->nama);
+            if($cek_kosong_email == "" || !filter_var($cek_kosong_email, FILTER_VALIDATE_EMAIL)) {
+                return back()->with(["error_input_admin" => 'Input Email Format Tidak Valid']);
+            }
+            
+            // Mengecek apakah nama tidak kosong
+            if($cek_kosong_nama_admin == "") {
+                return back()->with(["error_input_admin" => 'Input Nama Tidak Boleh Kosong']);
+            }
+
             $cek_username = Users::select("*")
             ->from("users")->where("username",'=',$request->username)->where("id",'!=',$request->id)->first();
     
@@ -1124,13 +1142,13 @@ class AdminController extends Controller
 
             // Check specific fields
             if (isset($errors['email'])) {
-                return redirect('/admin')->with(["error_input_admin" => 'email harus di isi']);
+                return back()->with(["error_input_admin" => 'email harus di isi']);
             }
             if (isset($errors['nama'])) {
-                return redirect('/admin')->with(["error_input_admin" => 'username tidak boleh kosong']);
+                return back()->with(["error_input_admin" => 'username tidak boleh kosong']);
             }
             if (isset($errors['nama_admin'])) {
-                return redirect('/admin')->with(["error_input_admin" => 'nama tidak boleh kosong']);
+                return back()->with(["error_input_admin" => 'nama tidak boleh kosong']);
             }
         }
     }
@@ -1499,6 +1517,16 @@ class AdminController extends Controller
             $id = 'WST' . $year . $lastNumber+1;
         }
         // dd($id);
+        $cek_kosong_nama = trim($request->nama);
+        $cek_kosong_deskripsi = trim($request->deskripsi);
+        $cek_kosong_alamat = trim($request->alamat);
+        $cek_kosong_harga = trim($request->harga);
+        $cek_kosong_harga_weekend = trim($request->harga_weekend);
+        $cek_kosong_jarak = trim($request->jarak);
+        if($cek_kosong_nama == "" || $cek_kosong_deskripsi == "" || $cek_kosong_alamat == "" || $cek_kosong_harga == "" || $cek_kosong_harga_weekend == "" || $cek_kosong_jarak == "" ){
+            return back()->with(["error_add" => 'Input Tidak Boleh Kosong / Hanya Spasi']);
+        }
+
         $cek = Wisata::select('*')
         ->from('wisata')
         ->where('nama','=',$request->nama)
@@ -2044,7 +2072,7 @@ class AdminController extends Controller
                                             ]);
                                             // kondisi jika insert gagal
                                             if(!$insert_menu){
-                                                return redirect('/dinas')->with(['error_add' => 'gagal Menambah data']);
+                                                return redirect('/kuliner')->with(['error_add' => 'gagal Menambah data']);
                                             }
                                         }else{
                                             return back()->with(["error_input_dinas" => 'Input Menu terhenti karena Menu '.$request->{'menu'.$i}.' sudah tersedia']);
@@ -2058,9 +2086,9 @@ class AdminController extends Controller
                             }
                         }
                     }
-                    return redirect('kuliner')->with(['sukses_add' => 'berhasil Menambah data']);
+                    return redirect('/kuliner')->with(['sukses_add' => 'berhasil Menambah data']);
                 }else{
-                    return redirect('kuliner')->with(['error_add' => 'gagal Menambah data']);
+                    return redirect('/kuliner')->with(['error_add' => 'gagal Menambah data']);
                 }
             }
         }
@@ -2087,6 +2115,12 @@ class AdminController extends Controller
         }
     }
     public function edit_menu(Request $request){
+        $cek_kosong_nama = trim($request->nama);
+        $cek_kosong_harga = trim($request->harga);
+        if($cek_kosong_nama == "" || $cek_kosong_harga == "" ){
+            return back()->with(["error_add" => 'Input Tidak Boleh Kosong / Hanya Spasi']);
+        }
+
         $get_id_kuliner = Kuliner::select("*")->from("kuliner")->where("nama",'=',$request->warung)->first();
         $cek_menu = Menu::select('*')
         ->from('menu')

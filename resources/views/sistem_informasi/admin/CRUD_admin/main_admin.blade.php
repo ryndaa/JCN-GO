@@ -155,7 +155,7 @@
                                             <th>Email</th>
                                             <th>Username <button style="border: none; background: transparent;" onclick="sortTableName()"><i class="fa fa-sort text-light ml-2"></i></button></th>
                                             <th>Nama Admin<br>
-                                            <th>Role<br>
+                                            {{-- <th>Role<br> --}}
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -166,7 +166,7 @@
                                             <td class="text-center" width="150px">{{ $userss->email }}</td>
                                             <td class="text-justify" style="width: 200px;">{{ $userss->username }}</td>
                                             <td class="text-justify" style="width: 200px;">{{ $userss->nama_admin }}</td>
-                                            <td class="text-center" style="width: 260px;">{{ $userss->role }}</td>
+                                            {{-- <td class="text-center" style="width: 260px;">{{ $userss->role }}</td> --}}
                                             {{-- <td class="text-center" style="width: 150px;">{{ $userss->status }}</td> --}}
                                             <td style="width: 300px">
                                                 {{-- <a href={{ route('delete_admin' , ['id' => $userss->id]) }} class="d-inline-block" style="margin-right:28px;" title="delete" name="delete">

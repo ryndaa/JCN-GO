@@ -282,7 +282,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="nama">Nama Wisata :</label>
-                                <input id="nama" type="text" class="form-control" placeholder="Masukkan naama wisata" required name="nama">
+                                <input id="nama" type="text" class="form-control" placeholder="Masukkan nama wisata" required name="nama">
                             </div>
 
                             <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
@@ -346,7 +346,7 @@
 
                             <div class="form-group">
                                 <label for="jarak">Jarak dari balaikota (Km) :</label>
-                                <input id="jarak" type="float" class="form-control" placeholder="Masukkan jarak" required name="jarak">
+                                <input id="jarak" type="number" class="form-control" placeholder="Masukkan jarak" required name="jarak">
                             </div>
                         </div>
                         <div class="modal-footer" style="text-align: center">
@@ -1068,7 +1068,7 @@ function deletewisata(wisataId) {
 @if (session('error_add'))
 <script>
     Swal.fire({
-    title: "Gagal menambah data",
+    title: "{{session('error_add')}}",
     icon: "error"
     });
 </script>

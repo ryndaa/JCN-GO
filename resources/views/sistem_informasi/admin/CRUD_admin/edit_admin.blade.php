@@ -119,6 +119,22 @@
 </div>
 <div id="toastBox">
 </div>
+@if (session('sukses_add'))
+<script>
+    Swal.fire({
+    title: "Berhasil menambah data",
+    icon: "success"
+    });
+</script>
+@endif
+@if (session('error_add'))
+<script>
+    Swal.fire({
+    title: "{{session('error_add')}}",
+    icon: "error"
+    });
+</script>
+@endif
 
 @if ($massage = Session::get('error_toast'))
     <script>
