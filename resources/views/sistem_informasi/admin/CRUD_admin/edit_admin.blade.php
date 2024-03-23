@@ -42,6 +42,7 @@
                       id="id"
                       class="formbold-form-input"
                       readonly
+                      style="background-color: rgb(224, 224, 224);"
                       />
                   </div>
                   <div>
@@ -56,6 +57,12 @@
                       required
                       />
                   </div>
+                  <div id="error_email_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                    <span id="error_email" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                    <span id="jml_input_email_container">
+                      <span id="jml_input_email">0</span> 
+                      / 100</span>
+                </div>
                 </div>
                 <div class="text-center mt-5 text-danger">{{ session('error_input_admin') }}</div>
               </div>
@@ -70,6 +77,7 @@
                   id="nama"
                   class="formbold-form-input"
                   readonly
+                  style="background-color: rgb(224, 224, 224);"
                   />
                 </div>
                 <div>
@@ -84,6 +92,12 @@
                   required
                   />
                 </div>
+                <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                  <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                  <span id="jml_input_nama_container">
+                    <span id="jml_input_nama">0</span> 
+                    / 100</span>
+              </div>
               </div>
               <div class="formbold-form-step-3">
                 <div class="formbold-form-confirm">
@@ -119,6 +133,67 @@
 </div>
 <div id="toastBox">
 </div>
+<script>
+      // batas huruf email admin
+      document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('admin');
+      var errorNama = document.getElementById('error_email');
+      var jmlInputString = document.getElementById('jml_input_email');
+      var jmlInputString_container = document.getElementById('jml_input_email_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 100) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 100); // Memotong nilai input jika lebih dari 100 karakter
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error
+          } else if (length == 100) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error jika tepat 100 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+
+      // batas huruf nama admin
+      document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('nama_admin');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_nama');
+      var jmlInputString_container = document.getElementById('jml_input_nama_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 100) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 100); // Memotong nilai input jika lebih dari 100 karakter
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error
+          } else if (length == 100) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error jika tepat 100 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+</script>
 @if (session('sukses_add'))
 <script>
     Swal.fire({

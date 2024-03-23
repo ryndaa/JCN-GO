@@ -112,13 +112,32 @@
                                 <label for="username">User Name :</label>
                                 <input id="username" type="text" class="form-control" placeholder="User Name" required name="username">
                             </div>
+                            <div id="error_username_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_username" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_username_container">
+                                  <span id="jml_input_username">0</span> 
+                                  / 50</span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="nama">Nama Admin :</label>
                                 <input id="nama" type="text" class="form-control" placeholder="Nama Admin" required name="nama_admin">
                             </div>
+                            <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_nama_container">
+                                  <span id="jml_input_nama">0</span> 
+                                  / 50</span>
+                            </div>
                             <div class="form-group">
                                 <label for="email">Email :</label>
                                 <input id="email" type="email" class="form-control" placeholder="Email Admin" required name="email">
+                            </div>
+                            <div id="error_email_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                <span id="error_email" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                <span id="jml_input_email_container">
+                                  <span id="jml_input_email">0</span> 
+                                  / 100</span>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password :</label>
@@ -201,6 +220,93 @@
 
 <!-- Script JavaScript -->
 <script>
+    // batas huruf nama admin
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('nama');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_nama');
+      var jmlInputString_container = document.getElementById('jml_input_nama_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+    // batas huruf username admin
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('username');
+      var errorNama = document.getElementById('error_username');
+      var jmlInputString = document.getElementById('jml_input_username');
+      var jmlInputString_container = document.getElementById('jml_input_username_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+    // batas huruf email admin
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('email');
+      var errorNama = document.getElementById('error_email');
+      var jmlInputString = document.getElementById('jml_input_email');
+      var jmlInputString_container = document.getElementById('jml_input_email_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 100) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 100); // Memotong nilai input jika lebih dari 100 karakter
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error
+          } else if (length == 100) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 100 huruf"; // Menampilkan pesan error jika tepat 100 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
     // Fungsi untuk menampilkan SweetAlert
     function showDeleteConfirmation(userId) {
         const swalWithBootstrapButtons = Swal.mixin({

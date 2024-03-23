@@ -122,9 +122,21 @@
                                     <label for="nama">Nama Menu :</label>
                                     <input id="nama" type="text" class="form-control" placeholder="Masukkan nama Menu" required name="nama">
                                 </div>
+                                <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                    <span id="error_nama" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                    <span id="jml_input_string_container">
+                                      <span id="jml_input_string">0</span> 
+                                      / 50</span>
+                                </div>
                                 <div class="form-group">
                                     <label for="harga">harga :</label>
                                     <input id="harga" type="number" class="form-control" placeholder="Masukkan harga Menu" required name="harga">
+                                </div>
+                                <div id="error_harga_menu_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
+                                    <span id="error_harga_menu" class="text-danger mt-1" style="text-transform: capitalize"></span>
+                                    <span id="jml_input_harga_menu_container">
+                                      <span id="jml_input_harga_menu">0</span> 
+                                      / 10</span>
                                 </div>
                             </div>
                             <div class="modal-footer" style="text-align: center">
@@ -254,6 +266,64 @@
     </div>
 
 <script>
+    // batas huruf nama
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('nama');
+      var errorNama = document.getElementById('error_nama');
+      var jmlInputString = document.getElementById('jml_input_string');
+      var jmlInputString_container = document.getElementById('jml_input_string_container');
+  
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 50) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 50); // Memotong nilai input jika lebih dari 50 karakter
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error
+          } else if (length == 50) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 50 huruf"; // Menampilkan pesan error jika tepat 50 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 50 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+//   jml int harga biasa
+document.addEventListener('DOMContentLoaded', function () {
+      // Mengambil elemen berdasarkan ID
+      var inputDinas = document.getElementById('harga');
+      var errorNama = document.getElementById('error_harga_menu');
+      var jmlInputString = document.getElementById('jml_input_harga_menu');
+      var jmlInputString_container = document.getElementById('jml_input_harga_menu_container');
+      // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+      function updateCharacterCount() {
+          var length = inputDinas.value.length;
+          jmlInputString.textContent = length; // Memperbarui jumlah karakter yang ditampilkan
+  
+          if (length > 10) {
+              jmlInputString_container.style.color = "red";
+              inputDinas.value = inputDinas.value.substring(0, 10); // Memotong nilai input jika lebih dari 10 karakter
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error
+          } else if (length == 10) {
+              jmlInputString_container.style.color = "red";
+              errorNama.textContent = "Maksimal 10 angka"; // Menampilkan pesan error jika tepat 10 karakter
+          } else {
+              jmlInputString_container.style.color = "black";
+              errorNama.textContent = ""; // Mengosongkan pesan error jika kurang dari 10 karakter
+          }
+      }
+  
+      // Menambahkan event listener untuk merespons setiap kali ada input
+      inputDinas.addEventListener('input', updateCharacterCount);
+  });
+
     function showDeleteFasilitas(KulinerId) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
