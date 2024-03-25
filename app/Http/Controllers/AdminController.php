@@ -1257,6 +1257,9 @@ class AdminController extends Controller
                 }
             }
 
+            if($request->harga_terendah >= $request->harga_tertinggi){
+                return back()->with(["error_input_dinas" => "harga terendah harus lebih kecil dari harga tertinggi"]);
+            }
             // ketika jarak yang dimasukkan lebih dari 10 km
             if($request->jarak >= 10){
                 return back()->with(["error_input_dinas" => 'jarak tidak boleh lebih dari 10km']);
@@ -1400,6 +1403,9 @@ class AdminController extends Controller
     
             $cekPanjang = count($cek);
             
+            if($request->harga_terendah >= $request->harga_tertinggi){
+                return back()->with(["error_input_dinas" => "harga terendah harus lebih kecil dari harga tertinggi"]);
+            }
 
             if($cekPanjang == 0){
                 $year = Date('Y');
@@ -1818,6 +1824,7 @@ class AdminController extends Controller
             }
 
             if($request->file_layanan !== null){
+                
                 $file = $request->file('file_layanan');
                 $nama_file = 'File_layanan'.'.'.$file->getClientOriginalExtension();
                 $file->move('file_layanan',$nama_file);
@@ -1831,6 +1838,10 @@ class AdminController extends Controller
     
                 // looping buat ngebaca isi file nya
                 for($i = 1; $i < count($data); $i++){
+                    if($data[0][0] !== "Nama Menu" || $data[0][1] !== "Harga Menu ( angka )"){
+                        return back()->with(["error_input_dinas" => 'Input Excel harus sesuai format yang tersedia']);
+                    }
+
                     // ini misal ada 2 kolom input ( soalnya aku nerapin cuman masukin 1 kolom doang )
                     if (isset($data[$i][2])) {
                         return back()->with(["error_input_dinas" => 'Input Layanan terhenti karena pada baris ke '.$i+1 .' tidak sesuai format penulisan']);
@@ -1850,6 +1861,9 @@ class AdminController extends Controller
                                 return back()->with(["error_input_dinas" => 'Input menu terhenti karena menu pada baris ke '.$i+1 .' sudah tersedia']);
                             }else{
                                 // KONDISI JIKA BELUM TERSEDIA, MAKA AKAN DILAKUKAN INSERT
+                                if(trim($data[$i][1]) == "" || trim($data[$i][0]) == ""){
+                                    return back()->with(["error_input_dinas" => 'Input menu terhenti karena menu pada baris ke '.$i+1 .' kosong']);
+                                }
                                 DB::table('menu')
                                 ->insert([
                                     'nama' => $trim_data,
@@ -2030,6 +2044,9 @@ class AdminController extends Controller
                                     return back()->with(["error_input_dinas" => 'Input menu terhenti karena menu pada baris ke '.$i+1 .' sudah tersedia']);
                                 }else{
                                 // KONDISI JIKA BELUM TERSEDIA, MAKA AKAN DILAKUKAN INSERT
+                                    if(trim($data[$i][1]) == "" || trim($data[$i][0]) == ""){
+                                        return back()->with(["error_input_dinas" => 'Input menu terhenti karena menu pada baris ke '.$i+1 .' kosong']);
+                                    }
                                     DB::table('menu')
                                     ->insert([
                                         'nama' => $trim_data,

@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="assets/sistem_informasi/table/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
 
     <style>
             #searchDinas::placeholder {
@@ -186,7 +186,7 @@
                                                     <i style="font-size: 15px" class="fa fa-trash"></i>
                                                 </button>
                                                 <a href={{ route('edit_penginapan' ,['id' => $penginapans->id ]) }} class="d-inline-block ml-3" title="edit" name="edit">
-                                                    <i class="fa fa-pen" style="font-size: 15px"></i>
+                                                    <i class="fa fa-pencil" style="font-size: 15px"></i>
                                                 </a>
                                             </td>                                            
                                         </tr>

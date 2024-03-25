@@ -89,7 +89,7 @@
     }
     </style>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
 
 <body>
     <section class="ftco-section">
@@ -243,7 +243,7 @@
                                                     <i style="font-size: 15px" class="fa fa-trash"></i>
                                                 </button>
                                                 <a href={{ route('edit_kuliner' ,['id' => $warung->id ]) }} class="d-inline-block ml-3" title="edit" name="edit">
-                                                    <i class="fa fa-pen" style="font-size: 20px"></i>
+                                                    <i class="fa fa-pencil" style="font-size: 20px"></i>
                                                 </a>
                                             </td>                                            
                                         </tr>
@@ -447,7 +447,7 @@ function deletekuliner(kulinerId) {
                     editLink.style.background = 'transparent';
                     editLink.title = 'edit menu';
                     editLink.className = 'd-inline-block ';
-                    editLink.innerHTML = '<i class="fa fa-pen"></i>';
+                    editLink.innerHTML = '<i class="fa fa-pencil"></i>';
 
                     btn_action.appendChild(deleteLink);
                     btn_action.appendChild(editLink);

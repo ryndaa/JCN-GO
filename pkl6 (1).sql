@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Mar 2024 pada 12.58
+-- Waktu pembuatan: 25 Mar 2024 pada 01.28
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -254,9 +254,9 @@ INSERT INTO `gedung` (`id`, `nama`, `deskripsi`, `maps`, `gambar`, `jenis`) VALU
 (30, 'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia', 'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia merupakan perangkat Pemerintah Kota Yogyakarta yang bertanggungjawab meneguhkan kota yogyakarta sebagai kota nyaman huni dan pusat pelayanan jasa yang berdaya saing kuat untuk keberdayaan masyarakat dengan berpijak pada nilai keistimewaan serta mendukung misi ke-7 walikota dan wawwali yaitu menigkatkan tata kelola pemerintahan yang baik dan bersih melalui peningkatan kualitas aparatur sipil negara.', 'https://ths.li/s75Xw3y', 'file_gambar/instansi/gambar_instansi_Badan Kepegawaian dan Pengembangan Sumber Daya Manusia', 'inst'),
 (31, 'Badan Kesatuan Bangsa dan Politik', 'Badan Kesatuan Bangsa dan Politik Kota Yogyakarta merupakan perangkat Pemerintah Kota Yogyakarta yang bertanggungjawab terhadap pembinaan dan pengembangan wawasan kebangsaan di Kota Yogyakarta. Urusan yang diampu oleh Bekesbangpol adalah urusan politik dalam negeri dan kesatuan bangsa.  ', 'https://maps.app.goo.gl/cv8cUct59QxFHuzp7?g_st=ic', 'file_gambar/instansi/gambar_instansi_Badan Kesatuan Bangsa dan Politik', 'inst'),
 (32, 'Badan Penanggulangan Bencana Daerah', 'Badan Penanggulangan Bencana Daerah (BPBD) Kota Yogyakarta adalah perangkat daerah Kota Yogyakarta yang dibentuk dalam rangka melaksanakan tugas dan fungsi untuk penanggulangan bencana dan segala akibat yang dimunculkannya. Berdasarkan Undang-Undang Nomor 24 Tahun 2007 tentang Penanggulangan bencana merupakan payung hukum tertinggi pembentukan Badan Penanggulangan Bencana Daerah (BPBD) yang selanjutnya Badan Penanggulangan Bencana Daerah (BPBD) Kota Yogyakarta dibentuk atas landasan Peraturan Daerah Kota Yogyakarta Nomor 03 Tahun 2011 tentang Badan Penanggulangan Bencana Daerah Kota Yogyakarta.', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.8885061338165!2d110.37774247400812!3d-7.801627092218582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57d23e195d2b%3A0x657bf2026b547acc!2sBadan%20Kesatuan%20Bangsa%20Dan%20Politik%20Kota%20Yogyakarta!5e0!3m2!1sen!2sid!4v1708997727954!5m2!1sen!2sid', 'file_gambar/instansi/gambar_instansi_Badan Penanggulangan Bencana Daerah', 'inst'),
-(33, 'Forum Pemantau Independen', 'Forum Pemantau Independen (Forpi) di Kota Yogyakarta memiliki peran penting dalam memastikan integritas dan transparansi dalam berbagai proses. Forpi memiliki tugas menyusun kode etik sebagai dasar pengawasan terhadap pelaksanaan pakta integritas. Mereka juga membantu program pencegahan korupsi di Lingkungan Pemerintah Kota Yogyakarta dan menyampaikan laporan hasil tugas kepada Walikota Yogyakarta.', 'https://ths.li/e1T6UG2', '', 'inst'),
-(34, 'Korps Pegawai Republik Indonesia', 'Korps Pegawai Republik Indonesia (Korpri) adalah satu-satunya organisasi dan wadah berhimpun Aparatur Sipil Negara (ASN) yang merupakan bagian integral dari Pemerintahan. Didirikan pada tanggal 29 November 1971, KORPRI memiliki peran penting dalam memastikan integritas dan transparansi dalam berbagai proses. Selain itu, KORPRI Kota Yogya juga aktif dalam berbagai program untuk masyarakat. Mereka rutin menggelar bakti sosial, termasuk pemasangan IUD KB gratis kepada masyarakat.', 'https://ths.li/G4LkkNt', '', 'inst'),
-(35, 'Pemberdayaan Kesejahteraan Keluarga', 'Pemberdayaan Kesejahteraan Keluarga (PKK) di Kota Yogyakarta memiliki peran penting dalam memajukan kesejahteraan keluarga dan masyarakat. ', 'https://ths.li/uV6CBkb', '', 'inst'),
+(33, 'Forum Pemantau Independen', 'Forum Pemantau Independen (Forpi) di Kota Yogyakarta memiliki peran penting dalam memastikan integritas dan transparansi dalam berbagai proses. Forpi memiliki tugas menyusun kode etik sebagai dasar pengawasan terhadap pelaksanaan pakta integritas. Mereka juga membantu program pencegahan korupsi di Lingkungan Pemerintah Kota Yogyakarta dan menyampaikan laporan hasil tugas kepada Walikota Yogyakarta.', 'https://ths.li/e1T6UG2', 'file_gambar/instansi/gambar_instansi_Forum Pemantau Independen', 'inst'),
+(34, 'Korps Pegawai Republik Indonesia', 'Korps Pegawai Republik Indonesia (Korpri) adalah satu-satunya organisasi dan wadah berhimpun Aparatur Sipil Negara (ASN) yang merupakan bagian integral dari Pemerintahan. Didirikan pada tanggal 29 November 1971, KORPRI memiliki peran penting dalam memastikan integritas dan transparansi dalam berbagai proses. Selain itu, KORPRI Kota Yogya juga aktif dalam berbagai program untuk masyarakat. Mereka rutin menggelar bakti sosial, termasuk pemasangan IUD KB gratis kepada masyarakat.', 'https://ths.li/G4LkkNt', 'file_gambar/instansi/gambar_instansi_Korps Pegawai Republik Indonesia', 'inst'),
+(35, 'Pemberdayaan Kesejahteraan Keluarga', 'Pemberdayaan Kesejahteraan Keluarga (PKK) di Kota Yogyakarta memiliki peran penting dalam memajukan kesejahteraan keluarga dan masyarakat. ', 'https://ths.li/uV6CBkb', 'file_gambar/instansi/gambar_instansi_Pemberdayaan Kesejahteraan Keluarga', 'inst'),
 (36, 'Graha Pandawa', 'Gedung Graha Pandawa, yang terletak di Balaikota Yogyakarta, adalah sebuah bangunan yang menjadi tempat pelaksanaan berbagai kegiatan. Berlokasi di pusat kota Yogyakarta, gedung ini memudahkan akses bagi peserta kegiatan. Gedung ini merupakan salah satu fasilitas yang disewakan atau dapat dipinjam oleh publik.', 'https://ths.li/ktPhm0h', 'file_gambar/instansi/gambar_instansi_Graha Pandawa', 'lain'),
 (37, 'Parkir MPP', 'Parkir MPP adalah parkir khusus roda dua yang berada di depan MPP yang dapat digunakan oleh pegawai maupun pengunjung dari MPP sendiri. ', 'https://ths.li/qvdRq3Q', 'file_gambar/instansi/gambar_instansi_Parkir MPP', 'lain'),
 (38, 'Parkir Sebrang MPP', 'Parkir Sebrang MPP adalah parkir khusus roda dua yang berada di depan MPP yang dapat digunakan oleh pegawai maupun pengunjung dari MPP sendiri. ', 'https://ths.li/zkYREqn', 'file_gambar/instansi/gambar_instansi_Parkir Sebrang MPP', 'lain'),
@@ -267,8 +267,7 @@ INSERT INTO `gedung` (`id`, `nama`, `deskripsi`, `maps`, `gambar`, `jenis`) VALU
 (43, 'Kantin', 'Kantin Mbak Ris, yang berada di kompleks Balaikota Yogyakarta, telah menjadi tempat yang akrab bagi para karyawan Pemerintah Kota (Pemkot) Yogyakarta. Mbak Ris merupakan generasi kedua, dia meneruskan usaha sang Ibu yang sebelumnya juga berjualan di komplek Balaikota. Sebelum berada di tempat yang sekarang, kantin Balaikota ini berada di Gedung Pawarta. Di kantin ini memiliki menu spesial, yakni brongkos koyor. Selain menjadi andalan para karyawan Pemkot Yogya, tak jarang banyak orang luar kerap memesan brongkos koyor ini. Selain brongkos koyor, kantin ini juga menyediakan menu lain, seperti nasi rames, mie nyemek, sop buntut, dan masih banyak lagi. Sementara untuk menu minumannya, kantin ini menyediakan berbagai macam menu pelepas dahaga, seperti aneka jus buah, serta minuman seperti es jeruk, es susu, dan es teh manis. ', 'https://ths.li/fqoYzg6', 'file_gambar/instansi/gambar_instansi_Kantin', 'lain'),
 (44, 'Parkir Vertikal', 'Gedung Parkir Vertikal di Kota Yogyakarta merupakan inisiatif yang menarik untuk mengatasi keterbatasan lahan parkir di perkotaan. Gedung ini khusus untuk sepeda motor. Terdiri dari enam tingkat, dengan setiap tingkat setinggi 1,5 meter. Dengan luas parkir adalah  6,5x8,5 meter persegi dan total tinggi gedung berkisar antara 10 hingga 12 meter. Diperkirakan gedung ini dapat menampung hingga 200 unit sepeda motor. Keunggulan sistem parkir vertikal ini adalah penggunaan lahan yang lebih efisien, terutama di kawasan perkotaan yang memiliki harga tanah tinggi. Gedung parkir vertikal ini akan dilengkapi dengan lift untuk memudahkan pengguna dalam menaik-turunkan sepeda motor. Pembangunan gedung ini diharapkan dapat menjadi solusi bagi kebutuhan lokasi parkir di Kota Yogyakarta.', 'https://ths.li/lhQz3ap', 'file_gambar/instansi/gambar_instansi_Parkir Vertikal', 'lain'),
 (45, 'Parkir Depan TK', 'Parkir di depan TK adalah parkiran untuk roda dua, yang dapat digunakan oleh pegawai dan pengunjung instansi terdekat.', 'https://ths.li/h8ywkFf', 'file_gambar/instansi/gambar_instansi_Parkir Depan TK', 'lain'),
-(46, 'Parkir Depan Kominfosan', 'Parkir depan kominfosan adalah parkiran yang digunakan untuk parkir roda dua, yang dapat diakses oleh pegawai dan pengunjung kominfosan, dan instansi terdekat lainnya.', 'https://ths.li/UcTOYwi', 'file_gambar/instansi/gambar_instansi_Parkir Depan Kominfosan', 'lain'),
-(118, 'test', 'asda', NULL, 'file_gambar/instansi/gambar_instansi_rimuru_nikki.jpg', 'lain');
+(46, 'Parkir Depan Kominfosan', 'Parkir depan kominfosan adalah parkiran yang digunakan untuk parkir roda dua, yang dapat diakses oleh pegawai dan pengunjung kominfosan, dan instansi terdekat lainnya.', 'https://ths.li/UcTOYwi', 'file_gambar/instansi/gambar_instansi_Parkir Depan Kominfosan', 'lain');
 
 -- --------------------------------------------------------
 
@@ -1305,7 +1304,7 @@ ALTER TABLE `wisata`
 -- AUTO_INCREMENT untuk tabel `fasilitas`
 --
 ALTER TABLE `fasilitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
 
 --
 -- AUTO_INCREMENT untuk tabel `gambar_detail_layanan`
@@ -1317,7 +1316,7 @@ ALTER TABLE `gambar_detail_layanan`
 -- AUTO_INCREMENT untuk tabel `gedung`
 --
 ALTER TABLE `gedung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT untuk tabel `layanan`
@@ -1329,13 +1328,13 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT untuk tabel `list_fasilitas`
 --
 ALTER TABLE `list_fasilitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=555;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=566;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -87,7 +87,7 @@
     }
     </style>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> --}}
 
 <body>
     <section class="ftco-section">
@@ -196,7 +196,7 @@
                                                 </button>
 
                                                 <a href={{route('edit_admin' ,['id' => $userss->id ])}} class="d-inline-block ml-5" title="edit" name="edit">
-                                                    <i class="fa fa-pen" style="font-size: 20px"></i>
+                                                    <i class="fa fa-pencil" style="font-size: 20px"></i>
                                                 </a>
                                             </td>                                            
                                         </tr>
