@@ -37,19 +37,37 @@
 
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="assets/landing_page/1/assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/landing_page/1/assets/css/templatemo-lugx-gaming.css">
-  <link rel="stylesheet" href="assets/landing_page/1/assets/css/owl.css">
-  <link rel="stylesheet" href="assets/landing_page/1/assets/css/animate.css">
+  <link rel="stylesheet" href="{{ asset('assets/landing_page/1/assets/css/templatemo-lugx-gaming.css' )}}">
+  <link rel="stylesheet" href="{{ asset('assets/landing_page/1/assets/css/owl.css' )}}">
+  <link rel="stylesheet" href="{{ asset('assets/landing_page/1/assets/css/animate.css' )}}">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
+<style>
+  .background-header {
+    background-color: rgb(47, 182, 47) !important;
+    border-radius: 0px 0px 25px 25px;
+    height: 80px!important;
+    position: fixed!important;
+    top: 0!important;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15)!important;
+    -webkit-transition: all .5s ease 0s;
+    -moz-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
+}
+
+.background-header .logo img {
+    max-width: 110px;
+}
+</style>
 </head>
 
 <body>
 
   <div class="hero_area">
-
     <div class="hero_bg_box">
       <div class="bg_img_box" style="background-image: url(assets/landing_page/images/tugu_jogja2.jpg); background-repeat: no-repeat; background-size: cover;">
         {{-- <img src="assets/landing_page/images/hero-bg.png" alt=""> --}}
@@ -567,7 +585,19 @@
   </section>
 
   <!-- end info section -->
+<script>
+  	$(window).scroll(function() {
+	  var scroll = $(window).scrollTop();
+	  var box = $('.header-text').height();
+	  var header = $('header').height();
 
+	  if (scroll >= box - header) {
+	    $("header").addClass("background-header");
+	  } else {
+	    $("header").removeClass("background-header");
+	  }
+	})
+</script>
   @if (session('username'))
     <script>
       var nama = <?php echo json_encode(session('username')); ?>;
@@ -592,6 +622,8 @@
 
   <!-- jQery -->
   <script type="text/javascript" src="assets/landing_page/js/jquery-3.4.1.min.js"></script>
+  <script src="{{ asset('assets/landing_page/1/vendor/jquery/jquery.min.js' )}}"></script>
+  
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>

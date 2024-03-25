@@ -346,7 +346,7 @@
 
                             <div class="form-group">
                                 <label for="jarak">Jarak dari balaikota (Km) :</label>
-                                <input id="jarak" type="number" class="form-control" placeholder="Masukkan jarak" required name="jarak">
+                                <input id="jarak" type="float" class="form-control" placeholder="Masukkan jarak" required name="jarak">
                             </div>
                         </div>
                         <div class="modal-footer" style="text-align: center">
