@@ -68,7 +68,7 @@
                     <p>{{ $wisata->alamat }}</p>
                     <ul>
                         <li style="color: black;"  id="hargaWeekdays"><span>Harga Weekdays:</span> Rp. <span style="color: black; font-weight: bold;" id="hargaTiketFormattedWeekdays"></span></li>
-                        <li style="color: black;"  id="hargaWeekend"><span>Harga Weekdays:</span> Rp. <span style="color: black; font-weight: bold;" id="hargaTiketFormattedWeekend"></span></li>
+                        <li style="color: black;"  id="hargaWeekend"><span>Harga Weekend:</span> Rp. <span style="color: black; font-weight: bold;" id="hargaTiketFormattedWeekend"></span></li>
                         <li><span>Jarak dari balaikota:</span> {{ $wisata->jarak }} <strong>Km</strong></li>
                     </ul>
                 </div>

@@ -113,7 +113,7 @@
                             </div>
                             <div class="modal-footer" style="text-align: center">
                                 <button type="submit" class="btn bg-danger" style="color: white" id="delete_gambar_penginapan" data-bs-dismiss="modal">Hapus</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                                                             <button style="border: none; background: transparent; color: red;" onclick="showDeleteFasilitas( '{{$fasilitass->id }}' )" class="d-inline-block" style="margin-right:28px;" title="Hapus Fasilitas" name="delete">
                                                                 <i style="font-size: 15px" class="fa fa-trash"></i>
                                                             </button>
-                                                            <button style="border: none; background: transparent; color: rgb(255, 0, 0); margin-left: 10px;" onclick="showDeleteConfirmationFasilitas( '{{$fasilitass->id_jenis_fasilitas }}' )" class="d-inline-block" style="margin-right:28px;" title="Hapus Fasilitas keseluruhan" name="delete">
+                                                            <button style="border: none; background: transparent; color: rgb(255, 0, 0); margin-left: 10px;" onclick="showDeleteConfirmationFasilitas( '{{$fasilitass->id_jenis_fasilitas }}' )" class="d-inline-block" style="margin-right:28px;" title="Hapus {{ $fasilitass->nama_fasilitas }} di semua penginapan?" name="delete">
                                                                 <i style="font-size: 15px" class="fa fa-ban"></i>
                                                             </button>
                                                         </span>

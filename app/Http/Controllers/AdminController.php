@@ -132,7 +132,7 @@ class AdminController extends Controller
             // misal nama dinas nya diubah
             if($get_nama->nama !== $request->dinas){
                 if(in_array($request->dinas, $get_gedung)){
-                    return back()->with(["error_input_dinas" => "dinas sudah tersedia"]);
+                    return back()->with(["error_input_dinas" => "dinas ".$request->dinas." sudah tersedia"]);
                 }
             }
 
@@ -614,7 +614,7 @@ class AdminController extends Controller
             $file_gambar_layanan1 = $request->file('file_gambar_layanan1');
             // dd($file_gambar_layanan1);
             if($cek_data){
-                return back()->with(["error_input_dinas" => 'instansi sudah tersedia']);
+                return back()->with(["error_input_dinas" => 'instansi '.$request->dinas.' sudah tersedia']);
             }else{
                 if($request->maps !== null){
                     $file_gambar = $request->file('file_gambar');
@@ -1065,7 +1065,7 @@ class AdminController extends Controller
 
         // dd($cek_username);
         if($cek_username){
-            return back()->with(["error_add" => "username sudah tersedia"]);
+            return back()->with(["error_add" => "username ".$request->username." sudah tersedia"]);
         }
         // untuk insert ID admin nya
         $cek = DB::table('users')
@@ -1253,7 +1253,7 @@ class AdminController extends Controller
             // misal nama penginapan nya diubah
             if($get_nama->nama !== $request->penginapan){
                 if(in_array($request->penginapan, $get_penginapan)){
-                    return back()->with(["error_input_dinas" => "penginapan sudah tersedia"]);
+                    return back()->with(["error_input_dinas" => "penginapan '.$request->penginapan.' sudah tersedia"]);
                 }
             }
 
@@ -1427,7 +1427,7 @@ class AdminController extends Controller
             $nama_file_gambar_penginapan = 'file_gambar/penginapan/'.$nama_file_gambar;
 
             if($cek_data){
-                return back()->with(["error_ready" => 'instansi sudah tersedia']);
+                return back()->with(["error_input_dinas" => 'Penginapan '.$request->penginapan.' sudah tersedia']);
             }else{
                 if($request->jarak >= 10){
                     return back()->with(["error_input_dinas" => 'jarak tidak boleh lebih dari 10km']);
@@ -1538,7 +1538,7 @@ class AdminController extends Controller
         ->where('nama','=',$request->nama)
         ->first();
         if($cek){
-            return redirect("/wisata")->with(['error_ready' => 'wisata sudah tersedia']);
+            return redirect("/wisata")->with(['error_ready' => 'wisata '. $request->nama. ' sudah tersedia']);
         }else{
             $file_gambar = $request->file('file_gambar');
             $nama_file_gambar = 'gambar_wisata_'.$file_gambar->getClientOriginalName();
@@ -1561,9 +1561,9 @@ class AdminController extends Controller
                 'jarak' => $request->jarak
             ]);
             if($insertWisata){
-                return redirect("/wisata")->with(['sukses_add' => 'wisata berhasil ditambah']);
+                return redirect("/wisata")->with(['sukses_add' => 'wisata '. $request->nama. ' berhasil ditambah']);
             }else{
-                return redirect("/wisata")->with(['error_add' => 'wisata gagal ditambah']);
+                return redirect("/wisata")->with(['error_add' => 'wisata '. $request->nama. ' gagal ditambah']);
             }
         }
     }
@@ -1607,7 +1607,7 @@ class AdminController extends Controller
             // misal nama wisata nya diubah
             if($get_nama->nama !== $request->nama){
                 if(in_array($request->nama, $get_wisata)){
-                    return back()->with(["error_input_dinas" => "wisata sudah tersedia"]);
+                    return back()->with(["error_input_dinas" => "wisata '.$request->nama.' sudah tersedia"]);
                 }
             }
 
@@ -1789,7 +1789,7 @@ class AdminController extends Controller
             // misal nama kuliner nya diubah
             if($get_nama->nama !== $request->nama){
                 if(in_array($request->nama, $get_kuliner)){
-                    return back()->with(["error_input_dinas" => "kuliner sudah tersedia"]);
+                    return back()->with(["error_input_dinas" => "kuliner $request->nama sudah tersedia"]);
                 }
             }
 
@@ -1990,7 +1990,7 @@ class AdminController extends Controller
             ->first();
             
             if($cek_data){
-                return back()->with(["error_input_dinas" => 'Kuliner sudah tersedia']);
+                return back()->with(["error_input_dinas" => 'Kuliner '.$request->nama.' sudah tersedia']);
             }else{
                 if($request->jarak >= 10){
                     return back()->with(["error_input_dinas" => 'jarak tidak boleh lebih dari 10km']);

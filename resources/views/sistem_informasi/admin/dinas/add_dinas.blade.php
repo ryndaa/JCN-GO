@@ -72,7 +72,7 @@
                   </div>
 
                   <div>
-                      <label for="maps" class="formbold-form-label"> Link 3d maps <strong class="text-danger font-weight-bold">*</strong> </label>
+                      <label for="maps" class="formbold-form-label"> Link 3d maps  </label>
                       <input
                       type="text"
                       name="maps"

@@ -109,7 +109,7 @@
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="username">User Name :</label>
+                                <label for="username">User Name : <strong class="text-danger font-weight-bold">*</strong></label>
                                 <input id="username" type="text" class="form-control" placeholder="User Name" required name="username">
                             </div>
                             <div id="error_username_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="nama">Nama Admin :</label>
+                                <label for="nama">Nama Admin : <strong class="text-danger font-weight-bold">*</strong></label>
                                 <input id="nama" type="text" class="form-control" placeholder="Nama Admin" required name="nama_admin">
                             </div>
                             <div id="error_nama_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
@@ -130,7 +130,7 @@
                                   / 50</span>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email :</label>
+                                <label for="email">Email : <strong class="text-danger font-weight-bold">*</strong></label>
                                 <input id="email" type="email" class="form-control" placeholder="Email Admin" required name="email">
                             </div>
                             <div id="error_email_container" style="display: flex; justify-content: space-between;margin-top: 10px;">
@@ -140,7 +140,7 @@
                                   / 100</span>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password :</label>
+                                <label for="password">Password : <strong class="text-danger font-weight-bold">*</strong></label>
                                 <input id="password" type="password" class="form-control" placeholder="Password" required name="password">
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                                     <tbody>
                                         @foreach ($users as $userss )
                                         <tr>
-                                            <th scope="row" class="scope" width="200px">{{ $loop->iteration }}</th>
+                                            <th scope="row" class="scope" width="100px">{{ $loop->iteration }}</th>
                                             <td class="text-center" width="150px">{{ $userss->email }}</td>
                                             <td class="text-justify" style="width: 200px;">{{ $userss->username }}</td>
                                             <td class="text-justify" style="width: 200px;">{{ $userss->nama_admin }}</td>

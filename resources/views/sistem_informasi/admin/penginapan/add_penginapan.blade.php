@@ -688,12 +688,14 @@ animation: anim 5s linear forwards;
                         <input
                         type="float"
                         name="jarak"
-                        placeholder="Masukkan jarak ( Maksimal 10km )"
+                        placeholder="Masukkan jarak ( Maksimal 10 )"
                         id="jarak"
                         class="formbold-form-input"
                         required
                         />
                     </div>
+                    <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
+
                     <div>
                         <label for="jenis" class="formbold-form-label mt-3">Jenis Penginapan<strong class="text-danger font-weight-bold">*</strong> </label>
                         <select class="form-select" aria-label="Default select example" id="jenis" name="jenis">
@@ -785,6 +787,32 @@ animation: anim 5s linear forwards;
 <div id="toastBox">
 </div>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('jarak');
+    var errorNama = document.getElementById('error_jarak');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+
+        if (!/^(\d+(\.\d+)?)$/.test(inputValue)) {
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+
+        if (inputValue >= 10) {
+            errorNama.textContent = "Maksimal 10 Km"; 
+        } else {
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
   // utk batasan input nama
   document.addEventListener('DOMContentLoaded', function () {
       // Mengambil elemen berdasarkan ID

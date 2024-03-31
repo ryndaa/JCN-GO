@@ -146,6 +146,7 @@
                       required
                       />
                   </div>
+                  <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
                 </div>
                 <div class="text-center mt-5 text-danger"><strong>{{ session('error_input_dinas') }}</strong></div>
               </div>
@@ -197,6 +198,32 @@
 <div id="toastBox">
 </div>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('jarak');
+    var errorNama = document.getElementById('error_jarak');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+
+        if (!/^(\d+(\.\d+)?)$/.test(inputValue)) {
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+
+        if (inputValue >= 10) {
+            errorNama.textContent = "Maksimal 10 Km"; 
+        } else {
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
   // batas huruf nama
   document.addEventListener('DOMContentLoaded', function () {
     // Mengambil elemen berdasarkan ID

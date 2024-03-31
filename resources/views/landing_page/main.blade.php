@@ -161,7 +161,7 @@
                     </div>
                   </div>
                   <div id="keterangan" class="mt-5">
-                    <h5 style="color: white; font-weight: bold;">Menyediakan 3d Virtual Tour untuk seluruh Balaikota beserta tiap Instansi didalamnya</h5>
+                    <h5 style="color: white; font-weight: bold;">Menyediakan 3d Virtual Tour untuk seluruh Balaikota beserta tiap Instansi di dalamnya</h5>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -537,7 +537,6 @@
                   email@gmail.com
                 </span>
               </a>
-              <div class="mt-2">&copy; Copyright by JCN-GO 2024 PKL Shid</div>
             </div>
           </div>
         </div>

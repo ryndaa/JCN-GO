@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="modal-footer" style="text-align: center">
                             <button type="submit" class="btn bg-danger" style="color: white" id="delete_gambar_instansi" data-bs-dismiss="modal">Hapus</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                             
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary">Ubah</button>
                         </div>
                     </form>
@@ -233,8 +233,8 @@
                                     <tbody>
                                         @foreach ($gedung as $dinas )
                                         <tr>
-                                            <th scope="row" class="scope" width="250px">{{ $loop->iteration }}</th>
-                                            <td class="text-left" width="100px" >{{ $dinas->nama }}</td>
+                                            <th scope="row" class="scope" width="100px">{{ $loop->iteration }}</th>
+                                            <td class="text-left" width="200px" >{{ $dinas->nama }}</td>
                                             <td class="text-center" style="width: 50px;">
                                                 <button type="submit" data-bs-toggle="modal" data-bs-target="#deskripsi_instansi_container" name="deskripsi_instansi" data-id="{{ json_encode(['deskripsi' => $dinas->deskripsi,'id_dinas' => $dinas->id, 'nama' => $dinas->nama]) }}" style="display: inline-block; border:none; background: transparent;" title="edit menu" class="d-inline-block">
                                                     <i class="fa fa-search-plus" style="font-size: 15px;"></i>

@@ -71,7 +71,7 @@
                       </div>
                     </label>
                   </div>
-                  <div>
+                   <div>
                       <label for="jarak" class="formbold-form-label mt-3"> jarak dari balaikota (km) <strong class="text-danger font-weight-bold">*</strong> </label>
                       <input
                       type="float"
@@ -81,7 +81,8 @@
                       class="formbold-form-input"
                       required
                       />
-                  </div>
+                    </div>
+                      <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
                   <div>
                         <label for="alamat" class="formbold-form-label mt-3"> Alamat <strong class="text-danger font-weight-bold">*</strong> </label>
                         <textarea
@@ -298,6 +299,33 @@ document.addEventListener('DOMContentLoaded', function () {
             errorNama.textContent = "Maksimal 10 angka"; 
         } else {
             jmlInputString_container.style.color = "black";
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
+// untuk batasan input jarak harus angka dan tidak boleh lebih dari 10km
+document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('jarak');
+    var errorNama = document.getElementById('error_jarak');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+
+        if (!/^(\d+(\.\d+)?)$/.test(inputValue)) {
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+
+        if (inputValue >= 10) {
+            errorNama.textContent = "Maksimal 10 Km"; 
+        } else {
             errorNama.textContent = ""; 
         }
     }

@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer" style="text-align: center">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <button type="submit" class="btn btn-primary">Ubah</button>
                             </div>
                         </form>
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="modal-footer" style="text-align: center">
                                     <button type="submit" class="btn bg-danger" style="color: white" id="delete_gambar_warung" data-bs-dismiss="modal">Hapus</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 </div>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                                     <tbody>
                                         @foreach ($kuliner as $warung )
                                         <tr>
-                                            <th scope="row" class="scope" width="150px">{{ $loop->iteration }}</th>
+                                            <th scope="row" class="scope" width="100px">{{ $loop->iteration }}</th>
                                             <td class="text-left" width="200px" >{{ $warung->nama }}</td>
                                             <td class="text-justify" style="width: 300px;">{{ $warung->alamat }}</td>
                                             <td class="text-center" style="width: 100px;">

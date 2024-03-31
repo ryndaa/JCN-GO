@@ -154,9 +154,9 @@
             <iframe src="{{ $gedungDetails->maps }}"
               width="100%" height="390" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
-          <div style="text-transform: capitalize;" class=""><strong style="color: black">Petunjuk</strong> :
+          <div class=""><strong style="color: black">Petunjuk</strong> :
           <ul type="circle" class="">
-            <li>Klik tanda panah yang sudah tersedia di 3d map diatas untuk petunjuk jalan</li>
+            <li>Klik tanda panah yang sudah tersedia di 3D map di atas untuk petunjuk jalan</li>
             <li><div class="" style="">Map bisa digeser</div></li>
           </ul>
           </div>

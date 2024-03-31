@@ -281,7 +281,7 @@
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="nama">Nama Wisata :</label>
+                                <label for="nama">Nama Wisata : <strong class="text-danger">*</strong></label>
                                 <input id="nama" type="text" class="form-control" placeholder="Masukkan nama wisata" required name="nama">
                             </div>
 
@@ -313,15 +313,15 @@
                                 </label>
                               </div>
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi :</label>
+                                <label for="deskripsi">Deskripsi : <strong class="text-danger">*</strong></label>
                                 <textarea required name="deskripsi" class="form-control" placeholder="Masukkan deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat :</label>
+                                <label for="alamat">Alamat : <strong class="text-danger">*</strong></label>
                                 <input id="alamat" type="text" class="form-control" placeholder="Masukkan Alamat" required name="alamat">
                             </div>
                             <div class="form-group">
-                                <label for="harga">Harga Tiket pada hari biasa (Rupiah) :</label>
+                                <label for="harga">Harga Tiket pada hari biasa (Rupiah) : <strong class="text-danger">*</strong></label>
                                 <input id="harga" type="number" class="form-control" placeholder="Masukkan harga" required name="harga">
                             </div>
 
@@ -333,7 +333,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="harga_weekend">Harga Tiket pada weekend (Rupiah) :</label>
+                                <label for="harga_weekend">Harga Tiket pada weekend (Rupiah) : <strong class="text-danger">*</strong></label>
                                 <input id="harga_weekend" type="number" class="form-control" placeholder="Masukkan harga" required name="harga_weekend">
                             </div>
 
@@ -345,12 +345,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="jarak">Jarak dari balaikota (Km) :</label>
+                                <label for="jarak">Jarak dari balaikota (Km) : <strong class="text-danger">*</strong></label>
                                 <input id="jarak" type="float" class="form-control" placeholder="Masukkan jarak" required name="jarak">
                             </div>
+                            <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
@@ -369,7 +370,7 @@
                             
                         </div>
                         <div class="modal-footer" style="text-align: center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                 </div>
             </div>
@@ -406,14 +407,14 @@
                                     <tbody>
                                         @foreach ($wisata as $wisatas )
                                         <tr>
-                                            <th scope="row" class="scope" width="200px">{{ $loop->iteration }}</th>
+                                            <th scope="row" class="scope" width="100px">{{ $loop->iteration }}</th>
                                             <td class="text-center" width="150px">{{ $wisatas->nama }}</td>
                                             {{-- <td class="text-center" style="width: 100px;">
                                                 <button type="submit" data-bs-toggle="modal" data-bs-target="#deskripsi_wisata_container" name="deskripsi_wisata" data-id="{{ json_encode(['deskripsi' => $wisatas->deskripsi,'id_wisatas' => $wisatas->id, 'nama' => $wisatas->nama]) }}" style="display: inline-block; border:none; background: transparent;" title="edit menu" class="d-inline-block">
                                                     <i class="fa fa-search-plus" style="font-size: 15px;"></i>
                                                 </button>
                                             </td> --}}
-                                            <td class="text-center" style="width: 200px;">{{ $wisatas->alamat }}</td>
+                                            <td class="text-center" style="width: 250px;">{{ $wisatas->alamat }}</td>
                                             <td class="text-center" style="width: 50px;">
                                                 <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" name="foto_wisata" data-id="{{ json_encode(['gambar' => $wisatas->gambar,'id_wisata' => $wisatas->id, 'nama' => $wisatas->nama]) }}" style="display: inline-block; border:none; background: transparent;" title="edit menu" class="d-inline-block">
                                                     <i class="fa fa-camera" style="font-size: 15px;"></i>
@@ -421,12 +422,12 @@
                                             </td>
                                             {{-- <td class="text-center" style="width: 200px;">{{ $wisatas->harga_tiket }}</td>
                                             <td class="text-center" style="width: 200px;">{{ $wisatas->harga_weekend }}</td> --}}
-                                            <td class="text-center" style="width: 260px;">{{ $wisatas->jarak }} <strong>Km</strong></td>
+                                            <td class="text-center" style="width: 100px;">{{ $wisatas->jarak }} <strong>Km</strong></td>
                                             <td style="width: 300px">
                                                 {{-- <a href={{ route('delete_wisata' , ['id' => $wisatas->id]) }} class="d-inline-block" style="margin-right:28px;" title="delete" name="delete">
                                                     <i style="font-size: 15px; color: red;" class="fa fa-trash"></i>
                                                 </a> --}}
-                                                <button style="border: none; background: transparent; color: red;margin-right: 10px;" onclick="showDeleteFasilitas( '{{$wisatas->id }}' )" class="d-inline-block" style="margin-right:28px;" title="Hapus Wisata" name="delete">
+                                                <button style="border: none; background: transparent; color: red;margin-right: 30px;" onclick="showDeleteFasilitas( '{{$wisatas->id }}' )" class="d-inline-block" style="margin-right:28px;" title="Hapus Wisata" name="delete">
                                                     <i style="font-size: 15px" class="fa fa-trash"></i>
                                                 </button>
                                                 <a href={{route('edit_wisata' ,['id' => $wisatas->id ])}} class="d-inline-block" title="edit" name="edit">
@@ -452,6 +453,32 @@
     <div id="toastBox">
     </div>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('jarak');
+    var errorNama = document.getElementById('error_jarak');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+
+        if (!/^(\d+(\.\d+)?)$/.test(inputValue)) {
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+
+        if (inputValue >= 10) {
+            errorNama.textContent = "Maksimal 10 Km"; 
+        } else {
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+
     // batas huruf nama
     document.addEventListener('DOMContentLoaded', function () {
       // Mengambil elemen berdasarkan ID

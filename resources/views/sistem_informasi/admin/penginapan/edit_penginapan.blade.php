@@ -713,6 +713,7 @@ animation: anim 5s linear forwards;
                         required
                         />
                     </div>
+                    <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
                     <div>
                       <label for="jenis" class="formbold-form-label mt-3">Jenis Penginapan<strong class="text-danger font-weight-bold">*</strong> </label>
                       <div class="mb-2">Jenis Penginapan Sebelumnya : 
@@ -785,6 +786,33 @@ animation: anim 5s linear forwards;
 </div>
 <div id="toastBox">
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Mengambil elemen berdasarkan ID
+    var inputDinas = document.getElementById('jarak');
+    var errorNama = document.getElementById('error_jarak');
+
+    // Fungsi untuk memperbarui jumlah karakter dan memeriksa limit
+    function updateCharacterCount() {
+        var inputValue = inputDinas.value;
+
+        if (!/^(\d+(\.\d+)?)$/.test(inputValue)) {
+            errorNama.textContent = "Input harus angka";
+            return;
+        }
+
+
+        if (inputValue >= 10) {
+            errorNama.textContent = "Maksimal 10 Km"; 
+        } else {
+            errorNama.textContent = ""; 
+        }
+    }
+
+    // Menambahkan event listener untuk merespons setiap kali ada input
+    inputDinas.addEventListener('input', updateCharacterCount);
+});
+</script>
   @if (session('sukses_add'))
   <script>
       Swal.fire({
