@@ -9,7 +9,7 @@
       <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
           <div class="text-left mb-5">
-            <span style="font-size: 15px; font-weight: bold;"><a href="/wisata">DAFTAR WISATA</a> / EDIT WISATA</span>
+            <span style="font-size: 15px; font-weight: bold;"><a href="/wisata">DAFTAR WISATA</a> / UBAH WISATA</span>
           </div>
           <form action="/submit_edit_wisata" method="post" enctype="multipart/form-data">
             @csrf
@@ -135,7 +135,7 @@
                   </div>
 
                   <div>
-                    <label for="jarak" class="formbold-form-label"> Jarak dari balaikota (Km) </label>
+                    <label for="jarak" class="formbold-form-label"> Jarak dari Balaikota (Km) </label>
                       <input
                       type="int"
                       name="jarak"

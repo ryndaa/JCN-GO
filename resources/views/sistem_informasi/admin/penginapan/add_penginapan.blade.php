@@ -684,7 +684,7 @@ animation: anim 5s linear forwards;
                     </div>
                     
                     <div>
-                        <label for="jarak" class="formbold-form-label mt-3">Jarak dari balaikota (km)<strong class="text-danger font-weight-bold">*</strong> </label>
+                        <label for="jarak" class="formbold-form-label mt-3">Jarak dari Balaikota (km)<strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
                         type="float"
                         name="jarak"

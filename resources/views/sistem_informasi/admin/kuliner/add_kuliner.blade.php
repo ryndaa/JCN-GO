@@ -72,7 +72,7 @@
                     </label>
                   </div>
                    <div>
-                      <label for="jarak" class="formbold-form-label mt-3"> jarak dari balaikota (km) <strong class="text-danger font-weight-bold">*</strong> </label>
+                      <label for="jarak" class="formbold-form-label mt-3"> Jarak dari Balaikota (km) <strong class="text-danger font-weight-bold">*</strong> </label>
                       <input
                       type="float"
                       name="jarak"
@@ -100,7 +100,7 @@
       
               <div class="formbold-form-step-2">
                 <h5 class="mb-3" style="font-weight: bold;">Tipe Input Menu</h5>
-                <div class="mb-3" style="display: flex;justify-content: space-between;">
+                <div class="mb-3" style="display: flex;justify-content: space-around;">
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="radio_input" id="biasa" checked>
                     <label class="form-check-label" for="biasa">
@@ -154,7 +154,7 @@
                         <li type="none" style="border-bottom: 1px solid rgb(129, 129, 129); display:inline-block; padding-bottom:3px; margin-bottom:10px;">Ketentuan Format File</li>
                         <li>File harus dalam bentuk excel</li>
                         <li>Hanya Menulis menu dan harga pada kolom pertama dan kolom kedua tiap baris  ( harga harus dalam angka, contoh : 10000 )</li>
-                        <li><strong>Format File dapat di download <a href="/download_file_menu" style="text-decoration: underline;">Disini</a></strong></li>
+                        <li><strong>Format File dapat diunduh <a href="/download_file_menu" style="text-decoration: underline;">di sini</a></strong></li>
                         <li type="none"><img src="{{ asset('assets/sistem_informasi/images/layanan/ketentuan_menu.png') }}" height="150px" width="200px" alt=""></li>
                       </ul>
                     </div>

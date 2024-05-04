@@ -554,7 +554,7 @@ animation: anim 5s linear forwards;
       <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
           <div class="text-left mb-5">
-            <span style="font-size: 15px; font-weight: bold;"><a href="/penginapan">DAFTAR PENGINAPAN</a> / EDIT PENGINAPAN</span>
+            <span style="font-size: 15px; font-weight: bold;"><a href="/penginapan">DAFTAR PENGINAPAN</a> / UBAH PENGINAPAN</span>
           </div>
           <form action="/submit_edit_penginapan" method="post" enctype="multipart/form-data">
             @csrf
@@ -702,7 +702,7 @@ animation: anim 5s linear forwards;
                     </div>
 
                     <div>
-                        <label for="jarak" class="formbold-form-label mt-3">Jarak dari balaikota (Km) <strong class="text-danger font-weight-bold">*</strong> </label>
+                        <label for="jarak" class="formbold-form-label mt-3">Jarak dari Balaikota (Km) <strong class="text-danger font-weight-bold">*</strong> </label>
                         <input
                         type="float"
                         name="jarak"

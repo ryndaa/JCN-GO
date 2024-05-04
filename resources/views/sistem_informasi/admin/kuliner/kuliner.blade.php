@@ -841,7 +841,7 @@ function deletekuliner(kulinerId) {
 @if (session('sukses_edit'))
 <script>
     Swal.fire({
-    title: "Data berhasil di edit",
+    title: "Data berhasil diubah",
     icon: "success"
     });
 </script>

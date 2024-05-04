@@ -699,7 +699,7 @@
 @if (session('sukses_edit'))
 <script>
     Swal.fire({
-    title: "Data berhasil di edit",
+    title: "Data berhasil diubah",
     icon: "success"
     });
 </script>
@@ -707,7 +707,7 @@
 @if (session('error_edit'))
 <script>
     Swal.fire({
-    title: "Data gagal di edit",
+    title: "Data gagal diubah",
     icon: "error"
     });
 </script>

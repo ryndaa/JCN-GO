@@ -345,7 +345,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="jarak">Jarak dari balaikota (Km) : <strong class="text-danger">*</strong></label>
+                                <label for="jarak">Jarak dari Balaikota (Km) : <strong class="text-danger">*</strong></label>
                                 <input id="jarak" type="float" class="form-control" placeholder="Masukkan jarak" required name="jarak">
                             </div>
                             <span id="error_jarak" class="text-danger mt-1" style="text-transform: capitalize"></span>
@@ -1127,7 +1127,7 @@ function deletewisata(wisataId) {
 @if (session('sukses_edit'))
 <script>
     Swal.fire({
-    title: "Data berhasil di edit",
+    title: "Data berhasil diubah",
     icon: "success"
     });
 </script>
@@ -1135,7 +1135,7 @@ function deletewisata(wisataId) {
 @if (session('error_edit'))
 <script>
     Swal.fire({
-    title: "Data gagal di edit",
+    title: "Data gagal diubah",
     icon: "error"
     });
 </script>

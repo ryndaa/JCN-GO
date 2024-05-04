@@ -1309,9 +1309,9 @@ class AdminController extends Controller
                         ]);
                     }
                 }else{
-                    return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di edit"]);
+                    return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di ubah"]);
                 }
-                return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di edit"]);
+                return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di ubah"]);
             }else{
                 
                 $update_penginapan = DB::table('penginapan')
@@ -1349,9 +1349,9 @@ class AdminController extends Controller
                         ]);
                     }
                 }else{
-                    return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di edit"]);
+                    return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di ubah"]);
                 }
-                return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di edit"]);
+                return redirect('/penginapan')->with(['sukses_edit' => "Fasilitas berhasil di ubah"]);
             }
         }catch (ValidationException $e) {
             // Validation failed
